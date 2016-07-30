@@ -1,0 +1,6 @@
+AllCops:
+  Include:
+    - Dangerfile
+    - Rakefile
+
+inherit_from: .rubocop_todo.yml
