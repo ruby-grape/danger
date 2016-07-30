@@ -10,7 +10,7 @@ Enable Danger for a project within the [ruby-grape organization](https://github.
 
 #### Set DANGER_GITHUB_API_TOKEN in Travis-CI
 
-In Travis-CI, choose _Settings_ and add `DANGER_GITHUB_API_TOKEN` in _Environment Variables_. Set the value to `81f74ac7c849d869ddb3da7f8caeb65867838778`, which is the API key for the [grape-bot](https://github.com/grape-bot) user.
+In Travis-CI, choose _Settings_ and add `DANGER_GITHUB_API_TOKEN` in _Environment Variables_. Set the value to the API key for the [grape-bot](https://github.com/grape-bot) user, look in [this build log](https://travis-ci.org/ruby-grape/danger/builds/148579641) for its value.
 
 #### Add Danger
 
