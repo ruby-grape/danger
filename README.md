@@ -39,5 +39,5 @@ To test things out, make a dummy entry in `CHANGELOG.md` that doesn't match the 
 
 ## License
 
-MIT License. See LICENSE for details.
+MIT License. See [LICENSE](LICENSE) for details.
 
