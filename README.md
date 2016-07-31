@@ -17,7 +17,7 @@ In Travis-CI, choose _Settings_ and add `DANGER_GITHUB_API_TOKEN` in _Environmen
 Add `danger` to `Gemfile`.
 
 ```ruby
-gem 'danger', '~> 2.0', require: false
+gem 'danger', '~> 2.0', require: false unless RUBY_PLATFORM == 'java'
 ```
 
 #### Add Dangerfile
