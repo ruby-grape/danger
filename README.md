@@ -14,23 +14,30 @@ In Travis-CI, choose _Settings_ and add `DANGER_GITHUB_API_TOKEN` in _Environmen
 
 #### Add Danger
 
-Add `danger` to `Gemfile`.
+Add `ruby-grape-danger` to `Gemfile`.
 
 ```ruby
-gem 'danger', '~> 2.1', require: false
+gem 'ruby-grape-danger', '~> 0.1.0', require: false
 ```
 
 #### Add Dangerfile
 
-Commit a `Dangerfile` with some placeholder text, eg. [Grape's Dangerfile](https://github.com/ruby-grape/grape/blob/master/Dangerfile). Danger automatically inherits the [Dangerfile](Dangerfile) in the organization's `danger` repo (this repo).
+Commit a `Dangerfile`, eg. [Grape's Dangerfile](https://github.com/ruby-grape/grape/blob/master/Dangerfile).
+
+```ruby
+danger.import_dangerfile(gem: 'ruby-grape-danger')
+```
 
 #### Add Danger to Travis-CI
 
 Add Danger to `.travis.yml`, eg. [Grape's Travis.yml](https://github.com/ruby-grape/grape/blob/master/.travis.yml).
 
 ```yaml
-before_script:
-  - bundle exec danger
+matrix:
+  include:
+    - rvm: 2.3.1
+      script:
+        - bundle exec danger
 ```
 
 #### Commit via a Pull Request
