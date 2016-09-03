@@ -1,9 +1,12 @@
 ### Changelog
 
-### 0.1.0 (Next)
+### 0.2.0 (Next)
+
+* Your contribution here.
+
+### 0.1.0 (9/3/2016)
 
 * [#5](https://github.com/ruby-grape/danger/pull/5): Initial public release as a gem for Danger 3.2.0 - [@dblock](https://github.com/dblock).
-* Your contribution here.
 
 ### Shared Dangerfile
 
