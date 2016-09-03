@@ -3,7 +3,12 @@ require 'bundler'
 
 Bundler.setup :default
 
+Bundler::GemHelper.install_tasks
+
 require 'rubocop/rake_task'
 RuboCop::RakeTask.new
 
-task default: [:rubocop]
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec)
+
+task default: [:rubocop, :spec]

@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'bundler'
-gem 'rake'
+gemspec
+
 gem 'rubocop', '0.42.0'
-gem 'danger', '~> 2.1', require: false
