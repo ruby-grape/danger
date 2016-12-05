@@ -1,7 +1,8 @@
 ### Changelog
 
-### 0.2.0 (Next)
+### 0.1.1 (Next)
 
+* [#7](https://github.com/ruby-grape/danger/pull/7): Upgraded to danger 4.0.1 and danger-changelog 0.2.0 - [@dblock](https://github.com/dblock).
 * Your contribution here.
 
 ### 0.1.0 (9/3/2016)
