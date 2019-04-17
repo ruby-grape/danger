@@ -2,7 +2,7 @@
 
 ### 0.1.2 (Next)
 
-* Your contribution here.
+* Your contribution here change.
 
 ### 0.1.1 (12/5/2016)
 
