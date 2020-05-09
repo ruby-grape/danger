@@ -1,14 +1,15 @@
 ### Changelog
 
-### 0.1.2 (Next)
+### 0.2.0 (Next)
 
+* [#8](https://github.com/ruby-grape/danger/pull/8): Upgraded Danger 8.0, danger-changelog 0.6.1 and added danger-toc 0.2.0 - [@dblock](https://github.com/dblock).
 * Your contribution here.
 
-### 0.1.1 (12/5/2016)
+### 0.1.1 (2016/12/05)
 
 * [#7](https://github.com/ruby-grape/danger/pull/7): Upgraded to danger 4.0.1 and danger-changelog 0.2.0 - [@dblock](https://github.com/dblock).
 
-### 0.1.0 (9/3/2016)
+### 0.1.0 (2016/09/03)
 
 * [#5](https://github.com/ruby-grape/danger/pull/5): Initial public release as a gem for Danger 3.2.0 - [@dblock](https://github.com/dblock).
 
