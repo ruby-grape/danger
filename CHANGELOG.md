@@ -1,5 +1,9 @@
 ### Changelog
 
+### 0.2.1 (Next)
+
+* Your contribution here.
+
 ### 0.2.0 (2020/05/09)
 
 * [#8](https://github.com/ruby-grape/danger/pull/8): Upgraded Danger 8.0, danger-changelog 0.6.1 and added danger-toc 0.2.0 - [@dblock](https://github.com/dblock).
