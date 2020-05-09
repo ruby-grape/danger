@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # --------------------------------------------------------------------------------------------------------------------
 # Has any changes happened inside the actual library code?
 # --------------------------------------------------------------------------------------------------------------------
@@ -7,9 +9,7 @@ has_spec_changes = !git.modified_files.grep(/spec/).empty?
 # --------------------------------------------------------------------------------------------------------------------
 # You've made changes to lib, but didn't write any tests?
 # --------------------------------------------------------------------------------------------------------------------
-if has_app_changes && !has_spec_changes
-  warn("There're library changes, but not tests. That's OK as long as you're refactoring existing code.", sticky: false)
-end
+warn("There're library changes, but not tests. That's OK as long as you're refactoring existing code.", sticky: false) if has_app_changes && !has_spec_changes
 
 # --------------------------------------------------------------------------------------------------------------------
 # You've made changes to specs, but no library code has changed?
@@ -21,15 +21,21 @@ end
 # --------------------------------------------------------------------------------------------------------------------
 # Have you updated CHANGELOG.md?
 # --------------------------------------------------------------------------------------------------------------------
-changelog.check
+changelog.check!
+
+# --------------------------------------------------------------------------------------------------------------------
+# Do you have a TOC?
+# --------------------------------------------------------------------------------------------------------------------
+toc.check!
 
 # --------------------------------------------------------------------------------------------------------------------
 # Don't let testing shortcuts get into master by accident,
 # ensuring that we don't get green builds based on a subset of tests.
 # --------------------------------------------------------------------------------------------------------------------
 
-(git.modified_files + git.added_files - %w(Dangerfile)).each do |file|
+(git.modified_files + git.added_files - %w[Dangerfile]).each do |file|
   next unless File.file?(file)
+
   contents = File.read(file)
   if file.start_with?('spec')
     fail("`xit` or `fit` left in tests (#{file})") if contents =~ /^\w*[xf]it/
