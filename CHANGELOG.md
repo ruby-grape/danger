@@ -1,9 +1,12 @@
 ### Changelog
 
-### 0.2.1 (Next)
+### 0.2.2 (Next)
+
+* Your contribution here.
+
+### 0.2.1 (2024/01/02)
 
 * [#11](https://github.com/ruby-grape/danger/pull/11): Upgraded Danger to 9.x, danger-changelog 0.7.x & switched from Travis to GHA.
-* Your contribution here.
 
 ### 0.2.0 (2020/05/09)
 
