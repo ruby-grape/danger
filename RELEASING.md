@@ -1,6 +1,6 @@
 # Releasing
 
-There're no particular rules about when to release ruby-grape-danger. Release bug fixes frequently, features not so frequently and breaking API changes rarely.
+There are no particular rules about when to release ruby-grape-danger. Release bug fixes frequently, features not so frequently and breaking API changes rarely.
 
 ### Release
 
@@ -11,7 +11,7 @@ bundle install
 rake
 ```
 
-Check that the last build succeeded in [Travis CI](https://travis-ci.org/ruby-grape/ruby-grape-danger) for all supported platforms.
+Check that the last build succeeded in for all supported platforms.
 
 Increment the version, modify [lib/ruby-grape-danger/version.rb](lib/ruby-grape-danger/version.rb).
 
