@@ -1,5 +1,5 @@
 name: danger
-on: [pull_request, push]
+on: pull_request
 
 jobs:
   danger:
