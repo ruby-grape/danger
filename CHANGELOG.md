@@ -2,6 +2,7 @@
 
 ### 0.2.1 (Next)
 
+* [#9](https://github.com/ruby-grape/danger/pull/9): Upgraded Danger to 9.x, danger-changelog 0.7.x.
 * Your contribution here.
 
 ### 0.2.0 (2020/05/09)
