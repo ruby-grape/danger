@@ -2,6 +2,7 @@
 
 ### 0.2.2 (Next)
 
+* [#13](https://github.com/ruby-grape/danger/pull/12): Remove README TOC check - [@alexanderadam](https://github.com/alexanderadam)
 * Your contribution here.
 
 ### 0.2.1 (2024/02/01)
