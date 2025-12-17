@@ -1,5 +1,23 @@
 # frozen_string_literal: true
 
+require 'ruby-grape-danger'
+require 'English'
+
+# --------------------------------------------------------------------------------------------------------------------
+# Automatically export danger report when Dangerfile finishes
+# --------------------------------------------------------------------------------------------------------------------
+at_exit do
+  next if $ERROR_INFO # Skip if an exception occurred
+
+  if defined?(status_report)
+    reporter = RubyGrapeDanger::Reporter.new(status_report)
+    reporter.export_json(
+      ENV.fetch('DANGER_REPORT_PATH', nil),
+      ENV.fetch('GITHUB_EVENT_PATH', nil)
+    )
+  end
+end
+
 # --------------------------------------------------------------------------------------------------------------------
 # Has any changes happened inside the actual library code?
 # --------------------------------------------------------------------------------------------------------------------
