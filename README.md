@@ -60,7 +60,7 @@ on:
 
 jobs:
   danger:
-    uses: ruby-grape/ruby-grape-danger/.github/workflows/danger-run.yml@main
+    uses: ruby-grape/danger/.github/workflows/danger-run.yml@main
 ```
 
 Create `.github/workflows/danger-comment.yml`:
@@ -75,7 +75,7 @@ on:
 
 jobs:
   comment:
-    uses: ruby-grape/ruby-grape-danger/.github/workflows/danger-comment.yml@main
+    uses: ruby-grape/danger/.github/workflows/danger-comment.yml@main
 ```
 
 ### Commit via a Pull Request
@@ -100,19 +100,12 @@ The workflows are separated into two stages:
    - Formats and posts results as a PR comment
    - Updates existing comment on subsequent runs
 
-### Benefits of Reusable Workflows
-
-✅ **DRY**: Define workflows once in `ruby-grape-danger`, reuse everywhere
-✅ **Consistent**: All Grape projects use the same reporting format and behavior
-✅ **Maintainable**: Fix a bug in the workflows once, all projects benefit automatically
-✅ **Scalable**: Add new checks to any project's Dangerfile without touching workflows
-
 ### How It Works
 
 When you reference the reusable workflows:
 
 ```yaml
-uses: ruby-grape/ruby-grape-danger/.github/workflows/danger-run.yml@main
+uses: ruby-grape/danger/.github/workflows/danger-run.yml@main
 ```
 
 GitHub Actions:
