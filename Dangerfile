@@ -10,14 +10,16 @@ require 'English'
 # --------------------------------------------------------------------------------------------------------------------
 # Automatically export danger report when Dangerfile finishes
 # --------------------------------------------------------------------------------------------------------------------
+# Capture status_report for use in at_exit block
+report = status_report
+
 at_exit do
   # Only skip if there's an actual exception (not SystemExit from danger calling exit)
   next if $ERROR_INFO && !$ERROR_INFO.is_a?(SystemExit)
 
-  # Export the danger report
-  # The status_report method is available from the Dangerfile DSL
-  if defined?(Danger) && defined?(status_report)
-    reporter = RubyGrapeDanger::Reporter.new(status_report)
+  # Export the danger report captured above
+  if report
+    reporter = RubyGrapeDanger::Reporter.new(report)
     reporter.export_json(
       ENV.fetch('DANGER_REPORT_PATH', nil),
       ENV.fetch('GITHUB_EVENT_PATH', nil)
