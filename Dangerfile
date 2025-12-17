@@ -11,22 +11,47 @@ require 'English'
 # Automatically export danger report when Dangerfile finishes
 # --------------------------------------------------------------------------------------------------------------------
 at_exit do
-  puts "DEBUG: at_exit hook running"
-  puts "DEBUG: $ERROR_INFO = #{$ERROR_INFO.inspect}"
-  puts "DEBUG: status_report defined? = #{defined?(status_report).inspect}"
+  # Only skip if there's an actual exception (not SystemExit from danger calling exit)
+  next if $ERROR_INFO && !$ERROR_INFO.is_a?(SystemExit)
 
-  next if $ERROR_INFO # Skip if an exception occurred
+  # Try to export the danger report
+  begin
+    puts "DEBUG at_exit: Trying to find status_report"
+    puts "DEBUG at_exit: defined?(Danger) = #{defined?(Danger)}"
+    puts "DEBUG at_exit: Danger.class = #{Danger.class}" if defined?(Danger)
 
-  if defined?(status_report)
-    puts "DEBUG: Exporting danger report"
-    reporter = RubyGrapeDanger::Reporter.new(status_report)
-    reporter.export_json(
-      ENV.fetch('DANGER_REPORT_PATH', nil),
-      ENV.fetch('GITHUB_EVENT_PATH', nil)
-    )
-    puts "DEBUG: Danger report exported successfully"
-  else
-    puts "DEBUG: status_report not defined, skipping export"
+    # Try multiple ways to access the status report
+    danger_report = nil
+
+    # Method 1: Try Danger.current_dangerfile
+    if defined?(Danger) && Danger.respond_to?(:current_dangerfile)
+      puts "DEBUG at_exit: Danger.current_dangerfile exists"
+      danger_report = Danger.current_dangerfile.status_report
+    end
+
+    # Method 2: Try via ObjectSpace to find active dangerfile
+    unless danger_report
+      puts "DEBUG at_exit: Looking for Danger::Dangerfile via ObjectSpace"
+      ObjectSpace.each_object(Danger::Dangerfile) do |df|
+        danger_report = df.status_report
+        break
+      end
+    end
+
+    if danger_report
+      puts "DEBUG at_exit: Found danger_report, exporting"
+      reporter = RubyGrapeDanger::Reporter.new(danger_report)
+      reporter.export_json(
+        ENV.fetch('DANGER_REPORT_PATH', nil),
+        ENV.fetch('GITHUB_EVENT_PATH', nil)
+      )
+    else
+      puts "DEBUG at_exit: Could not find danger_report"
+    end
+  rescue => e
+    # Log any errors but don't fail the entire exit
+    puts "ERROR at_exit: #{e.class} - #{e.message}"
+    puts e.backtrace.join("\n")
   end
 end
 
