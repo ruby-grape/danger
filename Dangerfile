@@ -1,5 +1,28 @@
 # frozen_string_literal: true
 
+require 'ruby-grape-danger'
+require 'English'
+
+# This Dangerfile provides automatic danger report export and standard checks for Grape projects.
+# Other projects can import this via: danger.import_dangerfile(gem: 'ruby-grape-danger')
+# to get automatic reporting with their own custom checks.
+
+# Register at_exit hook to export report when Dangerfile finishes
+at_exit do
+  # Only skip if there's an actual exception (not SystemExit from danger calling exit)
+  next if $ERROR_INFO && !$ERROR_INFO.is_a?(SystemExit)
+
+  # Find the Dangerfile instance and get its current status_report
+  ObjectSpace.each_object(Danger::Dangerfile) do |df|
+    reporter = RubyGrapeDanger::Reporter.new(df.status_report)
+    reporter.export_json(
+      ENV.fetch('DANGER_REPORT_PATH', nil),
+      ENV.fetch('GITHUB_EVENT_PATH', nil)
+    )
+    break
+  end
+end
+
 # --------------------------------------------------------------------------------------------------------------------
 # Has any changes happened inside the actual library code?
 # --------------------------------------------------------------------------------------------------------------------
