@@ -11,14 +11,22 @@ require 'English'
 # Automatically export danger report when Dangerfile finishes
 # --------------------------------------------------------------------------------------------------------------------
 at_exit do
+  puts "DEBUG: at_exit hook running"
+  puts "DEBUG: $ERROR_INFO = #{$ERROR_INFO.inspect}"
+  puts "DEBUG: status_report defined? = #{defined?(status_report).inspect}"
+
   next if $ERROR_INFO # Skip if an exception occurred
 
   if defined?(status_report)
+    puts "DEBUG: Exporting danger report"
     reporter = RubyGrapeDanger::Reporter.new(status_report)
     reporter.export_json(
       ENV.fetch('DANGER_REPORT_PATH', nil),
       ENV.fetch('GITHUB_EVENT_PATH', nil)
     )
+    puts "DEBUG: Danger report exported successfully"
+  else
+    puts "DEBUG: status_report not defined, skipping export"
   end
 end
 
