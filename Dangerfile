@@ -7,23 +7,19 @@ require 'English'
 # Other projects can import this via: danger.import_dangerfile(gem: 'ruby-grape-danger')
 # to get automatic reporting with their own custom checks.
 
-# --------------------------------------------------------------------------------------------------------------------
-# Automatically export danger report when Dangerfile finishes
-# --------------------------------------------------------------------------------------------------------------------
-# Capture status_report for use in at_exit block
-report = status_report
-
+# Register at_exit hook to export report when Dangerfile finishes
 at_exit do
   # Only skip if there's an actual exception (not SystemExit from danger calling exit)
   next if $ERROR_INFO && !$ERROR_INFO.is_a?(SystemExit)
 
-  # Export the danger report captured above
-  if report
-    reporter = RubyGrapeDanger::Reporter.new(report)
+  # Find the Dangerfile instance and get its current status_report
+  ObjectSpace.each_object(Danger::Dangerfile) do |df|
+    reporter = RubyGrapeDanger::Reporter.new(df.status_report)
     reporter.export_json(
       ENV.fetch('DANGER_REPORT_PATH', nil),
       ENV.fetch('GITHUB_EVENT_PATH', nil)
     )
+    break
   end
 end
 
