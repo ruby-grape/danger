@@ -3,6 +3,10 @@
 require 'ruby-grape-danger'
 require 'English'
 
+# This Dangerfile provides automatic danger report export and standard checks for Grape projects.
+# Other projects can import this via: danger.import_dangerfile(gem: 'ruby-grape-danger')
+# to get automatic reporting with their own custom checks.
+
 # --------------------------------------------------------------------------------------------------------------------
 # Automatically export danger report when Dangerfile finishes
 # --------------------------------------------------------------------------------------------------------------------
