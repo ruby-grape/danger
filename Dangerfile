@@ -8,19 +8,18 @@ require 'English'
 # to get automatic reporting with their own custom checks.
 
 # Register at_exit hook to export report when Dangerfile finishes
+dangerfile_instance = self if defined?(Danger::Dangerfile) && is_a?(Danger::Dangerfile)
 at_exit do
   # Only skip if there's an actual exception (not SystemExit from danger calling exit)
   next if $ERROR_INFO && !$ERROR_INFO.is_a?(SystemExit)
+  next unless dangerfile_instance
 
-  # Find the Dangerfile instance and get its current status_report
-  ObjectSpace.each_object(Danger::Dangerfile) do |df|
-    reporter = RubyGrapeDanger::Reporter.new(df.status_report)
-    reporter.export_json(
-      ENV.fetch('DANGER_REPORT_PATH', nil),
-      ENV.fetch('GITHUB_EVENT_PATH', nil)
+  reporter = RubyGrapeDanger::Reporter.new(dangerfile_instance.status_report)
+  reporter.export_json(
+    ENV.fetch('DANGER_REPORT_PATH', nil),
+    ENV.fetch('GITHUB_EVENT_PATH', nil)
     )
-    break
-  end
+  break
 end
 
 # --------------------------------------------------------------------------------------------------------------------
