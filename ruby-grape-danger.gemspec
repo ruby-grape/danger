@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec'
   s.add_runtime_dependency 'danger', '~> 9'
-  s.add_runtime_dependency 'danger-changelog', '~> 0.7'
+  s.add_runtime_dependency 'danger-changelog', '~> 0.8'
   s.add_runtime_dependency 'danger-toc', '~> 0.2'
 end
