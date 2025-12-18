@@ -18,8 +18,7 @@ at_exit do
   reporter.export_json(
     ENV.fetch('DANGER_REPORT_PATH', nil),
     ENV.fetch('GITHUB_EVENT_PATH', nil)
-    )
-  break
+  )
 end
 
 # --------------------------------------------------------------------------------------------------------------------
