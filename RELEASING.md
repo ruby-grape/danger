@@ -50,8 +50,7 @@ Pushed ruby-grape-danger 0.7.2 to rubygems.org.
 Add the next release to [CHANGELOG.md](CHANGELOG.md).
 
 ```
-Next Release
-============
+### Next Release
 
 * Your contribution here.
 ```

@@ -1,5 +1,9 @@
 ### Changelog
 
+### Next Release
+
+* Your contribution here.
+
 ### 0.3.0 (2025/12/18)
 
 * [#16](https://github.com/ruby-grape/danger/pull/16): Report workflow postreview fixes - [@numbata](https://github.com/numbata).
