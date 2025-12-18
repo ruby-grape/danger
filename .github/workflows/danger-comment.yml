@@ -117,6 +117,6 @@ jobs:
             }
 
             // Fail if there are errors
-            if (report.errors && report.errors.length > 0) {
+            if (hasItems(report.errors)) {
               core.setFailed('Danger found errors');
             }

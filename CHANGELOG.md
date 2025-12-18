@@ -3,6 +3,7 @@
 ### 0.2.2 (Next)
 
 * Your contribution here.
+* [#16](https://github.com/ruby-grape/danger/pull/16): Report workflow postreview fixes - [@numbata](https://github.com/numbata).
 * [#15](https://github.com/ruby-grape/danger/pull/15): Extract danger reporting infrastructure into reusable workflows and gem - [@numbata](https://github.com/numbata).
 
 ### 0.2.1 (2024/02/01)
