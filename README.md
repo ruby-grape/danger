@@ -13,7 +13,6 @@
   - [Commit via a Pull Request](#commit-via-a-pull-request)
 - [Reusable Workflows](#reusable-workflows)
   - [Architecture](#architecture)
-  - [Benefits of Reusable Workflows](#benefits-of-reusable-workflows)
   - [How It Works](#how-it-works)
   - [Examples](#examples)
 - [License](#license)
