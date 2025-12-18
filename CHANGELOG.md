@@ -2,6 +2,7 @@
 
 ### Next Release
 
+* [#13](https://github.com/ruby-grape/danger/pull/12): Remove README TOC check - [@alexanderadam](https://github.com/alexanderadam)
 * Your contribution here.
 
 ### 0.3.0 (2025/12/18)
